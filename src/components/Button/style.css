@@ -16,7 +16,17 @@
     font-size: 0.9rem;
 }
 
+.btn-text:hover{
+    background-color: var(--theme) !important;
+    color: white;
+}
+
 .btn-blue{
     background-color: var(--theme) !important;
     color: var(--white);
+}
+
+.btn-blue:hover{
+    background-color: var(--white)!important;
+    color: blue;
 }

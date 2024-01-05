@@ -36,6 +36,7 @@ function SignupComponent() {
         placeholder={"Confirm Password"} />
 
         <Button  text={"Sign up using Email and Password"}/>
+        <p className='ortext'>or</p>
         <Button text={"Sign up using Google"} btnblue={true}/>
 
     </div>
