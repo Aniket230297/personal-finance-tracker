@@ -1,0 +1,23 @@
+.header-wrapper{
+    background-color: var(--theme);
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    font-size: 1rem;
+    position: sticky;
+}
+
+.logo{
+    color:var(--white);
+}
+
+.logout{
+    opacity: 0.8;
+    color: var(--white);
+}
+
+.logout:hover{
+    opacity: 1.5;
+}
