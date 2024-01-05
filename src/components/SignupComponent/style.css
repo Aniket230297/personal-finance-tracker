@@ -1,0 +1,13 @@
+.signupcomponent{
+    width: 30%;
+    height: auto;
+    box-shadow: var(--shadow);
+    padding-bottom: 1rem;
+    
+}
+
+.logotitle{
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.rem;
+}

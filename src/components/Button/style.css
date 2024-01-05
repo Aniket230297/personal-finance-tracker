@@ -1,0 +1,22 @@
+.btn-text{
+    width:80%;
+    height:1.5rem;
+    border: 1px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 7%;
+    padding: 0.2rem;
+    margin-top: 0.3rem;
+    background-color: var(--white) !important;
+    border:none;
+    border: 1px solid var(--theme);
+    border-radius: 0.2rem;
+    color: var(--theme);
+    font-size: 0.9rem;
+}
+
+.btn-blue{
+    background-color: var(--theme) !important;
+    color: var(--white);
+}

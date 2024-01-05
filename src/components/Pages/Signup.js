@@ -1,13 +1,14 @@
 import React from 'react'
 import Header from '../Header';
-import SigninSignup from '../SigninSignup';
+import SignupComponent from '../SignupComponent';
+
 
 function Signup() {
   return (
     <div>
       <Header />
-      <div className='signupsignincontainer'>
-          <SigninSignup />
+      <div className='signup-signin-container'>
+        <SignupComponent />
       </div>
     </div>
   )

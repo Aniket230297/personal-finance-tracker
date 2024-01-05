@@ -1,0 +1,19 @@
+.inputContainer {
+    padding: 0.5rem;
+    margin-left: 5%;
+}
+
+.custom-input {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin-top: 0.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 90%;
+    font-weight: 300;
+}
+
+.custom-input:focus {
+    outline: none;
+}
