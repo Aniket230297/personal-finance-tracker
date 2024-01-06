@@ -19,6 +19,7 @@
 .btn-text:hover{
     background-color: var(--theme) !important;
     color: white;
+    cursor: pointer;
 }
 
 .btn-blue{
@@ -28,5 +29,6 @@
 
 .btn-blue:hover{
     background-color: var(--white)!important;
-    color: blue;
+    color:var(--theme);
+    cursor: pointer;
 }
