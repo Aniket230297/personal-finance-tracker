@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { setDoc } from '../Firebase';
 import { doc } from '../Firebase';
 import { db } from '../Firebase';
+import { getDoc } from 'firebase/firestore';
 
 
 function SignupComponent() {
