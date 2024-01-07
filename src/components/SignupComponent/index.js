@@ -11,7 +11,10 @@ import { setDoc } from '../Firebase';
 import { doc } from '../Firebase';
 import { db } from '../Firebase';
 import { getDoc } from 'firebase/firestore';
-
+import { signInWithPopup } from 'firebase/auth';
+import { provider } from '../Firebase';
+import { GoogleAuthProvider } from 'firebase/auth';
+ 
 
 function SignupComponent() {
   const [name, setName] = useState("");
@@ -69,9 +72,9 @@ function SignupComponent() {
 
     try {
       await setDoc(doc(db, "users", user.uid), {
-        name: user.name,
+        name: user.DisplayName ? user.DisplayName: name ,
         email: user.email,
-        Photourl: "",
+        PhotoURL: user.PhotoURL? user.PhotoURL:"",
         createdAt: new Date()
       }
       )
@@ -112,6 +115,36 @@ function SignupComponent() {
 
   }
 
+  function googleAuth(){
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    setLoading(true);
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+
+    createDoc(user);
+    toast.success("user Sign in Successfully!")
+    setLoading(false);
+    navigate("/dashboard");
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    setLoading(false);
+    toast.error(errorMessage);
+    // ...
+  });
+  }
+
   return (
     <>
       {(loginform) ? (<div className='signupcomponent'>
@@ -134,7 +167,7 @@ function SignupComponent() {
             onClick={LoginUsingEmail}
             disabled={loading} />
           <p className='ortext'>or</p>
-          <Button text={"Login using Google"} btnblue={true} />
+          <Button text={"Login using Google"} btnblue={true} onClick={googleAuth}/>
           <p className='p-tag' onClick={() => { setLoginform(!loginform) }}>or Dont Have an Account? Click Here!</p>
         </form>
       </div>
@@ -170,7 +203,7 @@ function SignupComponent() {
               onClick={SignupUsingEmail}
               disabled={loading} />
             <p className='ortext'>or</p>
-            <Button text={"Sign up using Google"} btnblue={true} />
+            <Button text={"Sign up using Google"} btnblue={true}  onClick={googleAuth}/>
             <p className='p-tag' onClick={() => { setLoginform(!loginform) }}>or Have an Account Already? Click Here!</p>
           </form>
         </div>

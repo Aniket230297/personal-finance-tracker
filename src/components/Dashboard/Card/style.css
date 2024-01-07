@@ -1,0 +1,24 @@
+.row-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.2rem;
+    gap:4rem;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.dash-card{
+    width: 90%;
+    box-shadow: var(--shadow);
+}
+
+.card-title{
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0.3rem;
+}
+
+.card-value{ 
+    margin-bottom: 0.6rem
+}
+
