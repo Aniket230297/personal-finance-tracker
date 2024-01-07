@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 1.2rem;
+    flex-wrap: wrap;
     gap:4rem;
    font-family: 'Montserrat', sans-serif;
 }
@@ -10,11 +11,12 @@
 .dash-card{
     width: 90%;
     box-shadow: var(--shadow);
+    flex: 1;
 }
 
 .card-title{
     font-weight: 300;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
     margin-bottom: 0.3rem;
 }
 
