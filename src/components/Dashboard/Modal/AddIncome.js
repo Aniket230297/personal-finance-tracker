@@ -10,11 +10,17 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal }) {
     width: "340px"
   };
 
+  const [form]=form.useForm();
   return (
     <div>
       <Modal visible={isIncomeModalVisible} onCancel={handleIncomeModal} footer={null} width={400}>
         <p style={{ marginBottom: "1rem" }}>Add Expense</p>
-        <Form style={{ maxWidth: 300, }} layout="vertical">
+        <Form style={{ maxWidth: 300, }}
+         layout="vertical"
+         onFinish={(values)=>{
+          onFinish(values, "income");
+          form.resetFields();
+        }}>
 
           <Form.Item
             label="Name"

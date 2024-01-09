@@ -1,8 +1,8 @@
 import React from 'react'
-import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd'
+import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd';
 import Button from "../../Button"
 
-function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
+function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
   const inputStyle = {
     border: 'none',
     borderBottom: '1px solid #000',  // Adjust the color as needed
@@ -10,11 +10,18 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
     width: "340px"
   };
   
+  const [form]=form.useForm();
   return (
     <div>
       <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} >
         <p style={{marginBottom:"1rem"}}>Add Expense</p>
-        <Form style={{ maxWidth: 300,}} layout="vertical">
+        <Form style={{ maxWidth: 300,}} 
+        layout="vertical" 
+        onFinish={(values)=>{
+          onFinish(values, "expense");
+          form.resetFields();
+        }}
+        >
 
           <Form.Item
             label="Name"
