@@ -3,6 +3,13 @@ import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd'
 import Button from "../../Button"
 
 function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
+  const inputStyle = {
+    border: 'none',
+    borderBottom: '1px solid #000',  // Adjust the color as needed
+    borderRadius: 0,
+    width: "340px"
+  };
+  
   return (
     <div>
       <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} >
@@ -20,7 +27,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
             ]}
             style={{ marginBottom: 8 }}
           >
-            <Input  style={{border:'none', borderBottom:'1px solid black', marginBottom:"8"}}/>
+            <Input style={inputStyle} />
           </Form.Item >
 
 
@@ -31,7 +38,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
               message: 'Please input the expense amount!',
             },
           ]}    style={{ marginBottom: 8 }}>
-            <InputNumber style={{width:"100%", border:'none',borderRadius:'none', borderBottom:'1px solid black'}}  />
+            <InputNumber style={inputStyle}   />
           </Form.Item>
 
 
@@ -41,12 +48,17 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal }) {
                 message: 'Please select the expense date!',
               },
             ]}    style={{ marginBottom: 8 }}>
-            <DatePicker style={{width:"100%", border:'none', borderBottom:'1px solid black'}} />
+            <DatePicker style={inputStyle}  />
           </Form.Item>
 
 
-          <Form.Item label="Tag"    style={{ marginBottom: 8 }}>
-            <Select style={{width:"100%", border:'none', borderBottom:'1px solid black'}}>
+          <Form.Item label="Tag"    style={{ marginBottom: 8 }} rules={[
+              {
+                required: true,
+                message: 'Please select a tag!',
+              },
+            ]}  >
+            <Select style={inputStyle} >
               <Select.Option value="demo">Food</Select.Option>
               <Select.Option value="demo">Education</Select.Option>
               <Select.Option value="demo">Office</Select.Option>
