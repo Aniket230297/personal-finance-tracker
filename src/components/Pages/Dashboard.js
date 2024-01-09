@@ -26,13 +26,19 @@ const handleExpenesModal=()=>{
   setIsExpenseModalVisible(false);
 }
 
+const onFinish=(value, type)=>{
+  console.log("name" ,value.name);
+  console.log("amount" ,value.amount);
+  console.log(type)
+}
+
 
   return (
     <div>
       <Header />
       <Cards showIncomeModal={showIncomeModal} showExpenseModal={showExpenseModal} />
-      <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal} />
-      <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal}/>
+      <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal}  onFinish={onFinish}/>
+      <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish}/>
     
     </div>
   )

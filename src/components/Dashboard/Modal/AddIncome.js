@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd'
 import Button from "../../Button"
 
-function AddIncome({ isIncomeModalVisible, handleIncomeModal }) {
+function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
   const inputStyle = {
     border: 'none',
     borderBottom: '1px solid #000',  // Adjust the color as needed
@@ -10,11 +10,12 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal }) {
     width: "340px"
   };
 
-  const [form]=form.useForm();
+  const [form]=Form.useForm();
   return (
     <div>
-      <Modal visible={isIncomeModalVisible} onCancel={handleIncomeModal} footer={null} width={400}>
+      <Modal open={isIncomeModalVisible} onCancel={handleIncomeModal} footer={null} width={400}>
         <p style={{ marginBottom: "1rem" }}>Add Expense</p>
+        
         <Form style={{ maxWidth: 300, }}
          layout="vertical"
          onFinish={(values)=>{
@@ -58,20 +59,20 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal }) {
           </Form.Item>
 
 
-          <Form.Item label="Tag" style={{ marginBottom: 8 }} rules={[
+          <Form.Item label="select" style={{ marginBottom: 8 }} rules={[
               {
                 required: true,
                 message: 'Please select a tag!',
               },
             ]} >
             <Select style={inputStyle} >
-              <Select.Option value="demo">Food</Select.Option>
-              <Select.Option value="demo">Education</Select.Option>
-              <Select.Option value="demo">Office</Select.Option>
+              <Select.Option value="food">Food</Select.Option>
+              <Select.Option value="education">Education</Select.Option>
+              <Select.Option value="office">Office</Select.Option>
             </Select>
           </Form.Item>
 
-          <Button text={"Add Income"} btnblue={true}  />
+          <Button text={"Add Income"}  type="primary" htmlType="submit" />
 
         </Form>
 

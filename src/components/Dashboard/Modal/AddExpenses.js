@@ -1,26 +1,27 @@
 import React from 'react'
-import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd';
-import Button from "../../Button"
+import { Modal, Form, Input, InputNumber, DatePicker, Select, Button } from 'antd';
 
 function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
   const inputStyle = {
     border: 'none',
-    borderBottom: '1px solid #000',  // Adjust the color as needed
+    borderBottom: '1px solid #000',
     borderRadius: 0,
     width: "340px"
   };
-  
-  const [form]=form.useForm();
+
+  const [form] = Form.useForm();
   return (
     <div>
       <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} >
-        <p style={{marginBottom:"1rem"}}>Add Expense</p>
-        <Form style={{ maxWidth: 300,}} 
-        layout="vertical" 
-        onFinish={(values)=>{
-          onFinish(values, "expense");
-          form.resetFields();
-        }}
+        <p style={{ marginBottom: "1rem" }}>Add Expense</p>
+        <Form style={{ maxWidth: 300, }}
+          form={form}
+          layout="vertical"
+          onFinish={(values) => {
+            console.log("onfinish");
+            onFinish(values, "expense");
+            form.resetFields();
+          }}
         >
 
           <Form.Item
@@ -38,44 +39,47 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item >
 
 
-          <Form.Item label="Amount" 
-          rules={[
-            {
-              required: true,
-              message: 'Please input the expense amount!',
-            },
-          ]}    style={{ marginBottom: 8 }}>
-            <InputNumber style={inputStyle}   />
+          <Form.Item label="Amount"
+            rules={[
+              {
+                required: true,
+                message: 'Please input the expense amount!',
+              },
+            ]} style={{ marginBottom: 8 }}>
+            <InputNumber style={inputStyle} />
           </Form.Item>
 
 
           <Form.Item label="Date" rules={[
-              {
-                required: true,
-                message: 'Please select the expense date!',
-              },
-            ]}    style={{ marginBottom: 8 }}>
-            <DatePicker style={inputStyle}  />
+            {
+              required: true,
+              message: 'Please select the expense date!',
+            },
+          ]} style={{ marginBottom: 8 }}>
+            <DatePicker style={inputStyle} />
           </Form.Item>
 
 
-          <Form.Item label="Tag"    style={{ marginBottom: 8 }} rules={[
-              {
-                required: true,
-                message: 'Please select a tag!',
-              },
-            ]}  >
+          <Form.Item label="select" style={{ marginBottom: 8 }} rules={[
+            {
+              required: true,
+              message: 'Please select a tag!',
+            },
+          ]}  >
             <Select style={inputStyle} >
-              <Select.Option value="demo">Food</Select.Option>
-              <Select.Option value="demo">Education</Select.Option>
-              <Select.Option value="demo">Office</Select.Option>
+              <Select.Option value="Food">Food</Select.Option>
+              <Select.Option value="Education">Education</Select.Option>
+              <Select.Option value="Office">Office</Select.Option>
             </Select>
           </Form.Item>
 
-          <Button text={"Add Expense"} btnblue={true} />
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
 
-        </Form>
-
+            </Form>
 
       </Modal></div >
   )
