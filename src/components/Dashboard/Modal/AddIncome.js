@@ -1,6 +1,5 @@
 import React from 'react'
-import { Modal, Form, Input, InputNumber, DatePicker, Select } from 'antd'
-import Button from "../../Button"
+import { Modal, Form, Input, InputNumber, DatePicker, Select , Button} from 'antd'
 
 function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
   const inputStyle = {
@@ -14,10 +13,11 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
   return (
     <div>
       <Modal open={isIncomeModalVisible} onCancel={handleIncomeModal} footer={null} width={400}>
-        <p style={{ marginBottom: "1rem" }}>Add Expense</p>
+        <p style={{ marginBottom: "1rem" }}>Add Income</p>
         
         <Form style={{ maxWidth: 300, }}
          layout="vertical"
+         form={form}
          onFinish={(values)=>{
           onFinish(values, "income");
           form.resetFields();
@@ -39,6 +39,7 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
 
 
           <Form.Item label="Amount"
+           name="amount"
             rules={[
               {
                 required: true,
@@ -49,7 +50,9 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
           </Form.Item>
 
 
-          <Form.Item label="Date" rules={[
+          <Form.Item label="Date" 
+           name="date"
+          rules={[
             {
               required: true,
               message: 'Please select the expense date!',
@@ -59,7 +62,9 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
           </Form.Item>
 
 
-          <Form.Item label="select" style={{ marginBottom: 8 }} rules={[
+          <Form.Item label="tag"
+             name="tag"
+          style={{ marginBottom: 8 }} rules={[
               {
                 required: true,
                 message: 'Please select a tag!',
@@ -72,7 +77,7 @@ function AddIncome({ isIncomeModalVisible, handleIncomeModal, onFinish }) {
             </Select>
           </Form.Item>
 
-          <Button text={"Add Income"}  type="primary" htmlType="submit" />
+        <Button type="primary" htmlType="submit">Submit</Button>
 
         </Form>
 

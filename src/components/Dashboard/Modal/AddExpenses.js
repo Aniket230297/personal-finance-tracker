@@ -14,6 +14,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
     <div>
       <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} >
         <p style={{ marginBottom: "1rem" }}>Add Expense</p>
+        
         <Form style={{ maxWidth: 300, }}
           form={form}
           layout="vertical"
@@ -40,6 +41,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
 
 
           <Form.Item label="Amount"
+           name="amount"
             rules={[
               {
                 required: true,
@@ -50,7 +52,9 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item>
 
 
-          <Form.Item label="Date" rules={[
+          <Form.Item label="Date"
+           name="date"
+            rules={[
             {
               required: true,
               message: 'Please select the expense date!',
@@ -60,7 +64,9 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item>
 
 
-          <Form.Item label="select" style={{ marginBottom: 8 }} rules={[
+          <Form.Item label="tag"
+             name="tag"
+          style={{ marginBottom: 8 }} rules={[
             {
               required: true,
               message: 'Please select a tag!',
@@ -73,7 +79,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
             </Select>
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
