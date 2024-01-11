@@ -41,11 +41,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
 
 
           <Form.Item label="Amount"
-<<<<<<< HEAD
-          name="amount"
-=======
            name="amount"
->>>>>>> b0a5695ab396f339e17c02c75b37ac8c30323f8e
             rules={[
               {
                 required: true,
@@ -56,17 +52,9 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item>
 
 
-<<<<<<< HEAD
-          <Form.Item
-          style={{ marginBottom: 8 }}
-           label="Date"
-           name="date"
-           rules={[
-=======
           <Form.Item label="Date"
            name="date"
             rules={[
->>>>>>> b0a5695ab396f339e17c02c75b37ac8c30323f8e
             {
               required: true,
               message: 'Please select the expense date!',
@@ -76,15 +64,9 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item>
 
 
-<<<<<<< HEAD
-          <Form.Item label="Tag" style={{ marginBottom: 8 }} 
-          name="tag"
-          rules={[
-=======
           <Form.Item label="tag"
              name="tag"
           style={{ marginBottom: 8 }} rules={[
->>>>>>> b0a5695ab396f339e17c02c75b37ac8c30323f8e
             {
               required: true,
               message: 'Please select a tag!',
