@@ -8,12 +8,6 @@ function Cards({showExpenseModal,showIncomeModal}) {
 
   return (
     <div> 
-      
-      {/* <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal> */}
 
       <row className="row-card">
           <Card bordered={true} className="dash-card">
