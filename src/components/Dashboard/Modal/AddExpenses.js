@@ -40,6 +40,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
 
 
           <Form.Item label="Amount"
+          name="amount"
             rules={[
               {
                 required: true,
@@ -50,17 +51,23 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           </Form.Item>
 
 
-          <Form.Item label="Date" rules={[
+          <Form.Item
+          style={{ marginBottom: 8 }}
+           label="Date"
+           name="date"
+           rules={[
             {
               required: true,
               message: 'Please select the expense date!',
-            },
-          ]} style={{ marginBottom: 8 }}>
-            <DatePicker style={inputStyle} />
+            }
+          ]} >
+            <DatePicker style={inputStyle} format="YYYY-MM-DD" />
           </Form.Item>
 
 
-          <Form.Item label="select" style={{ marginBottom: 8 }} rules={[
+          <Form.Item label="Tag" style={{ marginBottom: 8 }} 
+          name="tag"
+          rules={[
             {
               required: true,
               message: 'Please select a tag!',

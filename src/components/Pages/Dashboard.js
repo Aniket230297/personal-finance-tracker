@@ -9,6 +9,7 @@ import AddIncome from '../Dashboard/Modal/AddIncome';
 function Dashboard() {
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
+  const [transaction ,setTransaction]=useState([])
 
 const showIncomeModal=()=>{
     setIsIncomeModalVisible(true);
@@ -29,6 +30,8 @@ const handleExpenesModal=()=>{
 const onFinish=(value, type)=>{
   console.log("name" ,value.name);
   console.log("amount" ,value.amount);
+  console.log("date" ,value.date);
+  console.log("tag" ,value.tag);
   console.log(type)
 }
 
