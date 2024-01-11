@@ -4,7 +4,7 @@ import Button from "../../Button/index.js";
 import { Card } from 'antd';
 
 
-function Cards({showExpenseModal,showIncomeModal}) {
+function Cards({showExpenseModal,showIncomeModal, income, expense, totalAmount}) {
 
   return (
     <div> 
@@ -12,19 +12,19 @@ function Cards({showExpenseModal,showIncomeModal}) {
       <row className="row-card">
           <Card bordered={true} className="dash-card">
             <h2 className='card-title'>Current Balance</h2>
-            <p className='card-value'>₹ 0</p>
+            <p className='card-value'>₹ {totalAmount}</p>
             <Button text={"Reset Balance"}  btnblue={true} />
           </Card>
 
           <Card  bordered={true} className="dash-card">
             <h2 className='card-title'>Total Income</h2>
-            <p className='card-value'>₹ 0</p>
+            <p className='card-value'>₹ {income}</p>
             <Button text={"Add Income"} btnblue={true} onClick={showIncomeModal}/>
           </Card>
 
           <Card bordered={true} className="dash-card">
             <h2 className='card-title'>Total Expenses</h2>
-            <p className='card-value'>₹ 0</p>
+            <p className='card-value'>₹ {expense}</p>
             <Button text={"Add Expenses"}  btnblue={true} onClick={showExpenseModal}/>
           </Card>
       </row>
