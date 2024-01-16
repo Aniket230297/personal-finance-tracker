@@ -8,14 +8,14 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import { db } from '../Firebase';
 import { addDoc } from 'firebase/firestore';
-
-
+import { auth } from '../Firebase';
+import { getAuth } from 'firebase/auth';
 
 
 function Dashboard() {
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
-  const {user} = getAuthState(auth)
+  const {user} = getAuth(auth)
 
   const showIncomeModal = () => {
     setIsIncomeModalVisible(true);
