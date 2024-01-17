@@ -8,26 +8,14 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import { db, auth } from '../Firebase';
 import { addDoc } from 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
-
+import { auth } from '../Firebase';
+import { getAuth } from 'firebase/auth';
 
 
 function Dashboard() {
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
-  // const { user } = useAuthState(auth);
-  // console.log(user);
-
-  const [user, loading, error] = useAuthState(auth);
-if (loading) {
-  return <div>Loading...</div>;
-}
-if (error) {
-  console.error(error);
-  return <div>Error fetching authentication state</div>;
-}
-console.log(user);
-
+  const {user} = getAuth(auth)
 
   const showIncomeModal = () => {
     setIsIncomeModalVisible(true);
