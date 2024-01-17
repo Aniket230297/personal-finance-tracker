@@ -3,19 +3,31 @@ import Header from '../Header'
 import Cards from '../Dashboard/Card'
 import AddExpenses from '../Dashboard/Modal/AddExpenses';
 import AddIncome from '../Dashboard/Modal/AddIncome';
-import {collection } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import moment from 'moment';
-import { db } from '../Firebase';
+import { db, auth } from '../Firebase';
 import { addDoc } from 'firebase/firestore';
-
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 
 function Dashboard() {
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
-  const {user} = getAuthState(auth)
+  // const { user } = useAuthState(auth);
+  // console.log(user);
+
+  const [user, loading, error] = useAuthState(auth);
+if (loading) {
+  return <div>Loading...</div>;
+}
+if (error) {
+  console.error(error);
+  return <div>Error fetching authentication state</div>;
+}
+console.log(user);
+
 
   const showIncomeModal = () => {
     setIsIncomeModalVisible(true);
@@ -35,29 +47,37 @@ function Dashboard() {
 
   const onFinish = (values, type) => {
     const newTransaction = {
-        type:type,
-        amount:parseFloat(values.amount),
-        name:values.name,
-        date:moment(values.date).format("YYYY.MM.DD"),
-        tag:values.tag
+      type: type,
+      amount: parseFloat(values.amount),
+      name: values.name,
+      date: moment(values.date).format("YYYY.MM.DD"),
+      tag: values.tag
     };
 
+    console.log(newTransaction);
+
     addtransaction(newTransaction);
+
   }
 
-  async function addtransaction(transaction){
-try{
-    const DocRef = await addDoc(
-      collection(db, `users/${user.uid}/transaction`),
-      transaction    
+  async function addtransaction(transaction) {
+    try {
+      if(user){
+      const DocRef = await addDoc(
+        collection(db, `users/${user.uid}/transaction`),
+        transaction
       );
+      console.log("docref", DocRef);
       toast.success("Transaction added!");
-    }catch(e){
+    }
+   
+   } catch (e) {
       toast.error("Couldnt  add transaction!");
+      console.log(e);
     }
   }
 
-
+  
 
   return (
     <div>

@@ -19,9 +19,9 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
           form={form}
           layout="vertical"
           onFinish={(values) => {
-            console.log("onfinish");
+            console.log("onfinish", values);
             onFinish(values, "expense");
-            form.resetFields();
+           form.resetFields();
           }}
         >
 
