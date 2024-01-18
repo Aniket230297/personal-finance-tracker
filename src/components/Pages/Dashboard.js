@@ -9,25 +9,26 @@ import moment from 'moment';
 import { db, auth } from '../Firebase';
 import { addDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { getDocs } from 'firebase/firestore';
+import { query } from 'firebase/firestore';
+import TransactionTable from '../TransactionTable';
 
 
 
 function Dashboard() {
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
-  // const { user } = useAuthState(auth);
-  // console.log(user);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0)
+  const [totalBalance, setTotalBalance] = useState(0)
+  const [loading, setLoading] = useState(false);
+  const [transactionArray, setTransactionArray] = useState([]);
+  
 
-  const [user, loading, error] = useAuthState(auth);
-if (loading) {
-  return <div>Loading...</div>;
-}
-if (error) {
-  console.error(error);
-  return <div>Error fetching authentication state</div>;
-}
-console.log(user);
 
+  const [user] = useAuthState(auth);
+
+  
 
   const showIncomeModal = () => {
     setIsIncomeModalVisible(true);
@@ -62,33 +63,81 @@ console.log(user);
 
   async function addtransaction(transaction) {
     try {
-      if(user){
-      const DocRef = await addDoc(
-        collection(db, `users/${user.uid}/transaction`),
-        transaction
-      );
-      console.log("docref", DocRef);
-      toast.success("Transaction added!");
-    }
-   
-   } catch (e) {
+      if (user) {
+        const DocRef = await addDoc(
+          collection(db, `users/${user.uid}/transaction`),
+          transaction
+        );
+        console.log("docref", DocRef);
+        toast.success("Transaction added!");
+        let newarr = transactionArray;
+        newarr.push(transaction);
+        setTransactionArray(newarr);
+        calculateamount()
+      }
+
+    } catch (e) {
       toast.error("Couldnt  add transaction!");
       console.log(e);
     }
   }
 
-  
+  useEffect(() => {
+    fetchTransaction();
+  }, []);
+
+  useEffect(() => {
+    calculateamount();
+  }, [transactionArray])
+
+  async function fetchTransaction() {
+    setLoading(true);
+    if (user) {
+      const q = query(collection(db, `users/${user.uid}/transaction`));
+      const querySnapshot = await getDocs(q);
+      let transactionsArray = [];
+
+      querySnapshot.forEach((doc) => {
+        transactionsArray.push(doc.data());
+
+      })
+      setTransactionArray(transactionsArray);
+      toast.success("Transaction Fetched");
+      console.log("arry", transactionArray);
+    }
+    setLoading(false);
+  }
+
+  function calculateamount() {
+    let incomeTotal = 0;
+    let expenseTotal = 0;
+
+    transactionArray.forEach((transaction) => {
+      if (transaction.type === "income") {
+        incomeTotal += transaction.amount;
+      } else {
+        expenseTotal += transaction.amount;
+      }
+    })
+    setIncome(incomeTotal);
+    setExpense(expenseTotal);
+    setTotalBalance(incomeTotal - expenseTotal);
+
+  }
 
   return (
     <div>
       <Header />
-      <Cards showIncomeModal={showIncomeModal} showExpenseModal={showExpenseModal}
+      {loading ? <>Loading...</> : <><Cards showIncomeModal={showIncomeModal} showExpenseModal={showExpenseModal}
+        income={income} expense={expense} totalBalance={totalBalance}
       />
-      <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal} onFinish={onFinish} />
-      <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish} />
+        <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal} onFinish={onFinish} />
+        <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish} />
+        <TransactionTable transactionArray={transactionArray} />
+      </>}
 
     </div>
   )
 }
 
-export default Dashboard
+export default Dashboard;
