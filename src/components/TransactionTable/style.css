@@ -4,5 +4,67 @@
 }
 
 .selectoption{
-    width:100px;
+    width:150px;
+    margin-left: 3%;
 }
+
+.input-selection{
+    width:100vw;
+    display: flex;
+    align-items: center;
+   border:none;
+}
+
+.inputdiv{
+    width:70%;
+    height: 1.3rem;
+    border: none;
+}
+
+.inputdiv:focus{
+    outline: none;
+}
+
+.radiogroupdiv{
+    display: flex;
+    padding: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.searchicon{
+    padding: 7px;
+}
+
+.input-search{
+    width:70%;
+    border:1px solid grey;
+    margin-left: 5%;
+}
+
+.csvContainer{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn{
+    width:150px;
+    padding: 8px;
+    font-size: 15px;
+    background-color:var(--white);
+    color: var(--theme);
+    border: none;
+    border: 1px solid var(--theme);
+    border-radius: 5px;
+}
+
+.btn-blue{
+    text-align: center !important;
+    padding: 8px;
+    background-color: var(--theme);
+    color: white;
+   
+}
+

@@ -51,7 +51,7 @@ function Dashboard() {
       type: type,
       amount: parseFloat(values.amount),
       name: values.name,
-      date: moment(values.date).format("YYYY.MM.DD"),
+      date:values.date.format("YYYY.MM.DD"),
       tag: values.tag
     };
 
@@ -84,7 +84,7 @@ function Dashboard() {
 
   useEffect(() => {
     fetchTransaction();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     calculateamount();
@@ -133,7 +133,7 @@ function Dashboard() {
       />
         <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal} onFinish={onFinish} />
         <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish} />
-        <TransactionTable transactionArray={transactionArray} />
+        <TransactionTable transactionArray={transactionArray} addtransaction={addtransaction} />
       </>}
 
     </div>
