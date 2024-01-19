@@ -77,7 +77,7 @@ function TransactionTable({ transactionArray, addtransaction }) {
             console.log("transaction", transactionArray);
             const newTransaction = {
               ...transactionArray,
-              amount: parseFloat(transactionArray.amount)
+              amount: parseFloat(transactionArray.amount) || 0
             }
             console.log("newTransaction", newTransaction)
             await addtransaction(newTransaction, true)
