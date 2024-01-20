@@ -1,0 +1,13 @@
+.chart-container{
+  display: flex;
+    width:90%;
+    height: auto;
+    margin-left: 2%;
+    box-shadow: var(--shadow);
+    margin-bottom: 2%;
+    padding: 3%;
+    border-radius: 5px;
+    
+  }
+
+  

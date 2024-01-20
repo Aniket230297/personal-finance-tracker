@@ -12,6 +12,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { getDocs } from 'firebase/firestore';
 import { query } from 'firebase/firestore';
 import TransactionTable from '../TransactionTable';
+import ChartComponent from '../ChartComponent';
 
 
 
@@ -125,6 +126,10 @@ function Dashboard() {
 
   }
 
+  let sortedtransaction = transactionArray.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+  }) 
+
   return (
     <div>
       <Header />
@@ -133,6 +138,11 @@ function Dashboard() {
       />
         <AddIncome isIncomeModalVisible={isIncomeModalVisible} handleIncomeModal={handleIncomeModal} onFinish={onFinish} />
         <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish} />
+       <div>
+        
+      {transactionArray.length !== 0? <ChartComponent sortedtransaction={sortedtransaction} /> : <p>No ChartComponent</p>}
+       </div>
+       
         <TransactionTable transactionArray={transactionArray} addtransaction={addtransaction} />
       </>}
 
