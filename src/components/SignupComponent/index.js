@@ -96,6 +96,7 @@ function SignupComponent() {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          console.log(user)
           toast.success("Signin sucessfully!")
           setLoading(false);
           navigate("/dashboard");
