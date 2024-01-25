@@ -1,6 +1,7 @@
 {
   "name": "finance-tracker",
   "version": "0.1.0",
+  "homepage": "https://Aniket230297.github.io/personal-finance-tracker",
   "private": true,
   "dependencies": {
     "@ant-design/charts": "^2.0.3",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.12.8",
     "firebase": "^10.7.1",
+    "gh-pages": "^6.1.1",
     "i": "^0.3.7",
     "moment": "^2.30.1",
     "npm": "^10.2.5",
@@ -24,6 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
