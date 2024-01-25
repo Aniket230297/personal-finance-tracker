@@ -14,6 +14,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Signup />} />
               <Route path='/dashboard' element={<Dashboard/>} />
+              <Route path='/personal-finance-tracker' element={<Signup />} />
             </Routes>
         </div>
     </BrowserRouter>

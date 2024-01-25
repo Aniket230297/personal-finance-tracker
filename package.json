@@ -1,7 +1,6 @@
 {
   "name": "finance-tracker",
   "version": "0.1.0",
-  "homepage": "https://Aniket230297.github.io/personal-finance-tracker",
   "private": true,
   "dependencies": {
     "@ant-design/charts": "^2.0.3",
