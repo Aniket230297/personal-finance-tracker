@@ -5,7 +5,6 @@ import AddExpenses from '../Dashboard/Modal/AddExpenses';
 import AddIncome from '../Dashboard/Modal/AddIncome';
 import { collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import moment from 'moment';
 import { db, auth } from '../Firebase';
 import { addDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';

@@ -2,7 +2,7 @@ import { Table, Select, Radio } from 'antd';
 import "./style.css";
 import { useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { unparse, tempLink, parse } from 'papaparse';
+import { unparse,  parse } from 'papaparse';
 
 
 function TransactionTable({ transactionArray, addtransaction }) {
