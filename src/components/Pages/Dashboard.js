@@ -139,7 +139,7 @@ function Dashboard() {
         <AddExpenses isExpenseModalVisible={isExpenseModalVisible} handleExpenesModal={handleExpenesModal} onFinish={onFinish} />
        <div>
         
-      {transactionArray.length !== 0? <ChartComponent sortedtransaction={sortedtransaction} /> : <p>No ChartComponent</p>}
+      {transactionArray.length !== 0? <ChartComponent sortedtransaction={sortedtransaction} /> : <div className='nodatafound'><p className='nocomponent'>No ChartComponent</p></div>}
        </div>
        
         <TransactionTable transactionArray={transactionArray} addtransaction={addtransaction} />
