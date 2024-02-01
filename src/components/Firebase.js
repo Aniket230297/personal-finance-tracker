@@ -24,4 +24,6 @@ const analytics = getAnalytics(app);
 const db=getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+
+console.log(analytics);
 export {db, auth, provider,doc,setDoc};

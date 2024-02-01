@@ -14,7 +14,7 @@ function Header() {
     if(user){
       Navigate("/dashboard");
     }
-  }, [user, loading])
+  }, [user, loading,Navigate])
 
   function logofunc(){
     signOut(auth).then(() => {
