@@ -12,7 +12,7 @@ function AddExpenses({ isExpenseModalVisible, handleExpenesModal, onFinish }) {
   const [form] = Form.useForm();
   return (
     <div>
-      <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} >
+      <Modal open={isExpenseModalVisible} onCancel={handleExpenesModal} footer={null} width={400} className='modaldiv' >
         <p style={{ marginBottom: "1rem" }}>Add Expense</p>
         
         <Form style={{ maxWidth: 300, }}

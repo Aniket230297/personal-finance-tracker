@@ -24,3 +24,20 @@
     margin-bottom: 0.6rem
 }
 
+@media only screen and (max-width: 425px){
+    
+    .row-card{
+        flex-direction: column;
+        gap:1rem;
+        margin-bottom: 0;
+    }
+
+    .dash-card{
+        width:100%;
+        gap:0.3rem;
+        margin-bottom:0px;
+       
+    }
+
+    
+}

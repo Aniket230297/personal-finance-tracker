@@ -21,3 +21,14 @@
 .logout:hover{
     opacity: 1.5;
 }
+
+@media only screen and (max-width: 425x){
+  .header-wrapper{
+    width:100%;
+  }
+
+  .logout{
+    margin-right: 30px;
+  }
+}
+

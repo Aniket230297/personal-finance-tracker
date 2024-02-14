@@ -24,6 +24,7 @@ body {
   --shadow:0px 0px 30px 8px rgba(227, 227, 227, 0.75);
 }
 
+
 .nodatafound{
   width:90vw;
   height:300px;
@@ -37,4 +38,12 @@ body {
 
 .nocomponent{
   font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 425px) {
+  .modaldiv {
+    width: 100% !important; /* Set width to full width */
+    max-width: none !important; /* Override max-width if necessary */
+    left: 0 !important; /* Center the modal horizontally */
+  }
 }
